@@ -2,7 +2,9 @@ package com.github.argoninc.job.listener;
 
 import java.util.Iterator;
 
+import com.github.argoninc.job.sign.Sign;
 import org.apache.commons.lang.ArrayUtils;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -50,12 +52,21 @@ public class PlayerInteractListener implements Listener {
 		}
 
 		if (e.getClickedBlock() != null) {
+			Player player = e.getPlayer();
 			Block b = e.getClickedBlock();
 			if (b.getType().equals(Material.ENCHANTING_TABLE)
-					&& e.getPlayer().getInventory().getItemInMainHand() != null) {
+					&& player.getInventory().getItemInMainHand() != null) {
 				enchantItem(e);
-			}else if(b.getType().equals(Material.OAK_SIGN)) {
-				
+			}else if(b.getType().equals(Material.OAK_WALL_SIGN)) {
+				System.out.println("ta aqui");
+				Location l = b.getLocation();
+
+				Sign s = Sign.getSign(l);
+				if(s!=null){
+					player.sendMessage(ChatColor.GREEN+"Clicado no: "+s.getJob().toString());
+				}else if(player.isOp() && Sign.SHOW_SIGN_LOCATIONS){
+					player.sendMessage(ChatColor.GREEN+l.toString());
+				}
 			}
 		}
 

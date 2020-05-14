@@ -15,7 +15,7 @@ public class JobConfig {
 	public static DB jobConfigDB = null;
 	
 	public static void init() {
-		jobConfigDB = new DB("argoninc/jobs_config.json");
+		jobConfigDB = new DB("argoninc/jobs/jobs_config.json");
 		
 		if(!jobConfigDB.has("list")) {
 			jobConfigDB.set("list", new JSONArray());

@@ -20,7 +20,7 @@ public class Job{
 	private static DB jobsDB = null;
 	
 	public static void init() {
-		jobsDB = new DB("argoninc/jobs.json");
+		jobsDB = new DB("argoninc/jobs/jobs.json");
 		if(!jobsDB.has("jobs")) {
 			jobsDB.set("jobs", new JSONArray());
 		}

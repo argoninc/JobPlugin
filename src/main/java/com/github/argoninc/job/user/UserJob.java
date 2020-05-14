@@ -19,7 +19,7 @@ public class UserJob {
 	public static DB userDB = null;
 	
 	public static void init() {
-		userDB = new DB("argoninc/job_users.json");
+		userDB = new DB("argoninc/jobs/job_users.json");
 		if(!userDB.has("users")) {
 			userDB.set("users", new JSONArray());
 		}

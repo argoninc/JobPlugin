@@ -1,5 +1,6 @@
 package com.github.argoninc.job;
 
+import com.github.argoninc.job.sign.Sign;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,6 +21,7 @@ public class Principal extends JavaPlugin{
 		UserJob.init();
 		JobConfig.init();
 		Enchant.init();
+		Sign.init();
 		
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			PlayerJoinListener.setupNewUser(p);
