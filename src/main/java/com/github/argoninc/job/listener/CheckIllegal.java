@@ -23,7 +23,7 @@ public class CheckIllegal {
 			Player player = (Player) e.getWhoClicked();
 			UserJob u = UserJob.getUser(player.getUniqueId().toString());
 			if (!isJobIncluded(u, jobs) && isMaterialIncluded(clicked, ms)) {
-				player.sendMessage(ChatColor.RED + "O item " + clicked.toString() + " so pode ser queimado por " + getJobString(jobs));
+				player.sendMessage(ChatColor.RED + "O item " + clicked.toString() + " só pode ser queimado por " + getJobString(jobs));
 				return true;
 			}
 		}
@@ -61,7 +61,7 @@ public class CheckIllegal {
 		
 		if (!isJobIncluded(user, jobs) && isMaterialIncluded(m, ms) && isActionIncluded(e.getAction(), actions)) {
 			player.sendMessage(
-					ChatColor.RED + "O bloco " + m.toString() + " so pode ser usado por " + getJobString(jobs));
+					ChatColor.RED + "O bloco " + m.toString() + " só pode ser usado por " + getJobString(jobs));
 			return true;
 		}
 		return false;
@@ -101,12 +101,12 @@ public class CheckIllegal {
 		if (!isJobIncluded(user, jobs) && isMaterialIncluded(mainHand, ms)
 				&& isActionIncluded(e.getAction(), actions)) {
 			player.sendMessage(
-					ChatColor.RED + "O item " + mainHand.toString() + " so pode ser usado por " + getJobString(jobs));
+					ChatColor.RED + "O item " + mainHand.toString() + " só pode ser usado por " + getJobString(jobs));
 			return true;
 		}
 		if (!isJobIncluded(user, jobs) && isMaterialIncluded(offHand, ms) && isActionIncluded(e.getAction(), actions)) {
 			player.sendMessage(
-					ChatColor.RED + "O item " + offHand.toString() + " so pode ser usado por " + getJobString(jobs));
+					ChatColor.RED + "O item " + offHand.toString() + " só pode ser usado por " + getJobString(jobs));
 			return true;
 		}
 		return false;
@@ -126,7 +126,7 @@ public class CheckIllegal {
 		}
 		
 		if (!isJobIncluded(user, jobs) && isMaterialIncluded(m, ms)) {
-			player.sendMessage(ChatColor.RED + "O item " + m.toString() + " so pode ser criado por " + getJobString(jobs));
+			player.sendMessage(ChatColor.RED + "O item " + m.toString() + " só pode ser criado por " + getJobString(jobs));
 			return true;
 		}
 		return false;
@@ -144,12 +144,12 @@ public class CheckIllegal {
 
 		if (!isJobIncluded(user, jobs) && isMaterialIncluded(mainHand, ms)) {
 			player.sendMessage(
-					ChatColor.RED + "O item " + mainHand.toString() + " so pode ser usado por " + getJobString(jobs));
+					ChatColor.RED + "O item " + mainHand.toString() + " só pode ser usado por " + getJobString(jobs));
 			return true;
 		}
 		if (!isJobIncluded(user, jobs) && isMaterialIncluded(offHand, ms)) {
 			player.sendMessage(
-					ChatColor.RED + "O item " + offHand.toString() + " so pode ser usado por " + getJobString(jobs));
+					ChatColor.RED + "O item " + offHand.toString() + " só pode ser usado por " + getJobString(jobs));
 			return true;
 		}
 		return false;
@@ -166,7 +166,7 @@ public class CheckIllegal {
 		Material material = b.getType();
 
 		if (!isJobIncluded(user, jobs) && isMaterialIncluded(material, ms)) {
-			player.sendMessage(ChatColor.RED + "O bloco " + material.toString() + " so pode ser COLETADO por "
+			player.sendMessage(ChatColor.RED + "O bloco " + material.toString() + " só pode ser COLETADO por "
 					+ getJobString(jobs));
 			return true;
 		}

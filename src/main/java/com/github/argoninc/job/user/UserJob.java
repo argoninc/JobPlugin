@@ -85,12 +85,40 @@ public class UserJob {
 		save();
 	}
 	public boolean isInCooldown() {
-		long cooldown = (long) JobConfig.jobConfigDB.get("jobCooldownSec") * 1000;
+		long cooldown = new Long((int) JobConfig.jobConfigDB.get("jobCooldownSec")) * 1000;
 		if(System.currentTimeMillis()-lastChange < cooldown) {
 			return true;
 		}
 		return false;
 	}
+
+	public String getCooldownText(){
+		String msg = "";
+		long cooldown = new Long((int) JobConfig.jobConfigDB.get("jobCooldownSec")) * 1000;
+		long cooldownSec = (cooldown-(System.currentTimeMillis()-lastChange))/1000;
+
+		if(cooldownSec>=3600){
+			int cd = (int) Math.ceil(cooldownSec/3600);
+			msg=cd + " hora" +plural(cd);
+		}else if(cooldownSec>=60){
+			int cd = (int) Math.ceil(cooldownSec/60);
+			msg=cd + " minuto"+plural(cd);
+		}else{
+			int cd = (int) Math.ceil(cooldownSec);
+			msg=cd + " segundo"+plural(cd);
+		}
+
+		return msg;
+	}
+
+	private String plural(double d){
+		if(d==1) {
+			return "";
+		}else{
+			return "s";
+		}
+	}
+
 	public boolean hasJob() {
 		if(job==null) {
 			return false;
@@ -99,6 +127,12 @@ public class UserJob {
 	}
 	public void setJob(Job job) {
 		this.job = job;
+		save();
+	}
+
+	public void giveJob(Job job) {
+		this.job = job;
+		this.lastChange = System.currentTimeMillis();
 		save();
 	}
 	

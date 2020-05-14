@@ -24,6 +24,10 @@ public class JobConfig {
 		if(!jobConfigDB.has("enchantPrice")) {
 			jobConfigDB.set("enchantPrice", 1);
 		}
+
+		if(!jobConfigDB.has("portalPrice")) {
+			jobConfigDB.set("portalPrice", 1);
+		}
 		
 		if(!jobConfigDB.has("jobCooldownSec")) {
 			jobConfigDB.set("jobCooldownSec", 86400);
